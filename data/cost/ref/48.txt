@@ -1,0 +1,21 @@
+Squadra	Città	Distanza (km)	Costo stimato (USD)
+Argentino  Junín  1000  $500.00
+Atenas  Córdoba  1100  $550.00
+Bahía Basket  Bahía Blanca  531  $265.50
+Boca Jrs  Buenos Aires  1141  $570.50
+Ciclista Olímpico  La Banda  1550  $775.00
+Estudiantes C.  Concordia  1240  $620.00
+Ferrocarril O.  Buenos Aires  1141  $570.50
+GECR Indalo  Comodoro Rivadavia  1000  $500.00
+Instituto C.  Córdoba  1100  $550.00
+Sionista  Paraná  1056  $528.00
+Lanús  Lanús  1141  $570.50
+Libertad S.  Sunchales  1200  $600.00
+Obras Basket  Buenos Aires  1141  $570.50
+Peñarol  Mar del Plata  995  $497.50
+Quilmes MP  Mar del Plata  995  $497.50
+Quimsa  Santiago del Estero  1555  $777.50
+Regatas C.  Corrientes  1988  $994.00
+San Lorenzo  Buenos Aires  1141  $570.50
+San Martín C.  Corrientes  1988  $994.00
+La Unión  Formosa  2002  $1,001.00

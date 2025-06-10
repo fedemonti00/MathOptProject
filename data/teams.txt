@@ -1,0 +1,22 @@
+ID    Team    City  
+0\Fake Team\None                                                             
+1\Argentino\Junín
+2\Atenas\Córdoba
+3\Bahía Basket\Bahía Blanca
+4\Boca Jrs\Buenos Aires
+5\Ciclista Olímpico\La Banda
+6\Estudiantes C.\Concordia
+7\Ferrocarril O.\Buenos Aires
+8\GECR Indalo\Comodoro Rivadavia
+9\Instituto C.\Córdoba
+10\Sionista\Paraná
+11\Lanus\Lanús
+12\Libertad S.\Sunchales
+13\Obras Basket\Buenos Aires
+14\Penarol\Mar del Plata
+15\Quilmes MP\Mar del Plata
+16\Quimsa\Santiago del Estero
+17\Regatas C.\Corrientes
+18\San Lorenzo\Buenos Aires
+19\San Martin C.\Corrientes
+20\La Union\Formosa

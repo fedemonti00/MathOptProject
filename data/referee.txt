@@ -1,0 +1,60 @@
+0\CHITI, Alejandro César\La Plata\A
+1\ESTEVEZ, Pablo Alberto\Mar del Plata\A
+2\FERNÁNDEZ, Juan José María\Santa Fe\A
+3\RAMALLO, Alejandro Gustavo\Córdoba\A
+4\RODRIGO, Daniel Hugo\Buenos Aires\A
+5\ROUGIER, Diego Hernán\Mendoza\A
+6\SAMPIETRO, Fernando Jorge\Buenos Aires\A
+7\SMITH, Roberto Omar\Buenos Aires\A
+8\TARIFEÑO, Sergio Gabriel\Neuquén\A
+9\VITO, Fabricio Leonardo\La Plata\A
+10\ALANIZ, Fabio Osmar\San Cristobal\A
+11\ALUZ, Mario José\Mendoza\A
+12\BRITEZ, Oscar Aníbal\Buenos Aires\A
+13\CASTILLO, Rodrigo Fernando\Buenos Aires\A
+14\CHAVEZ, Jorge Gustavo\Resistencia\A
+15\DINAMARCA, Julio Cesar\Trelew\A1
+16\GUZMAN, Silvio Gastón\San Juan\A1
+17\MARTINETTO, Oscar Antonio\Córdoba\A1
+18\MENDOZA, Leonardo Javier\Gualeguaychú\A1
+19\ZALAZAR, Leonardo Damian\Buenos Aires\A1
+20\BENÍTEZ,  Mario Alejandro\Posadas\A1  
+21\CORREA,  Luis Fernando\Bahía Blanca\A1  
+22\ESQUIVEL,  Carlos Andrés\San Miguel de Tucumán\A1  
+23\FALCÓN,  Emilio Ricardo\Mendoza\A1  
+24\GALLARDO,  Iván Rubén\Santa Fe\A1  
+25\LOZANO,  Enzo Martín\Paraná\A1  
+26\MORALES,  Diego Ezequiel\La Rioja\A1  
+27\PAREDES,  Matías Nicolás\Mar del Plata\A1  
+28\QUIROGA,  Fabián Ariel\Formosa\A1  
+29\ZÁRATE,  Lucas Alberto\Buenos Aires\A1  
+30\AGUILERA,  Tomás Eduardo\Concordia\A2  
+31\BUSTOS,  Ramiro Esteban\San Fernando del Valle de Catamarca\A2  
+32\CABALLERO,  Nicolás Iván\San Juan\A2  
+33\DELGADO,  Facundo Ariel\Tandil\A2  
+34\GIMÉNEZ,  Oscar Hernán\Viedma\A2  
+35\LOPEZ,  Marcos Damián\Buenos Aires\A2  
+36\NAVARRO,  Brian Rodrigo\Río Gallegos\A2  
+37\ROJAS,  Cristian Emanuel\Santa Fe\A2  
+38\SALINAS,  Javier Andrés\Resistencia\A2  
+39\TOLEDO,  Héctor Luis\Corrientes\A2  
+40\GONZÁLEZ,  Juan Pablo\La Plata\A2  
+41\FERNÁNDEZ,  Martín Andrés\Mar del Plata\A2 
+42\LÓPEZ,  Santiago Elías\Santa Fe\A2  
+43\HERRERA,  Diego Nicolás\Córdoba\A2  
+44\TORRES,  Cristian Marcelo\Buenos Aires\A2
+45\BENÍTEZ,  Matías Alejandro\Mendoza\A3  
+46\CASTRO,  Nicolás Iván\Buenos Aires\A3  
+47\RAMÍREZ,  Agustín Javier\Buenos Aires\A3  
+48\SÁNCHEZ,  Rodrigo Martín\Neuquén\A3  
+49\MOLINA,  Julián Ezequiel\La Plata\A3
+50\ROJAS,  Lucas Emanuel\San Cristobal\A3  
+51\DÍAZ,  Emiliano Sebastián\Mendoza\A3  
+52\ROMERO,  Gustavo Alberto\Buenos Aires\A3  
+53\MÉNDEZ,  Facundo Ariel\Buenos Aires\A3  
+54\NAVARRO,  Leandro Gabriel\Resistencia\A3
+55\PEREYRA,  Tomás Ricardo\Trelew\A3  
+56\ÁLVAREZ,  Federico Damián\San Juan\A3  
+57\DOMÍNGUEZ,  Iván Nicolás\Córdoba\A3  
+58\CARRIZO,  Esteban Raúl\Gualeguaychú\A3  
+59\ACOSTA,  Bruno Matías\Buenos Aires\A3

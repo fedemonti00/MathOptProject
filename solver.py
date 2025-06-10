@@ -7,10 +7,11 @@ class Solver:
         self.teams1 = instance.teams1
         self.teams2 = instance.teams2
         self.games = instance.games
+        self.games_teams = instance.games_teams
+        self.home_games_teams = instance.home_games_teams
         self.refs = instance.refs
         self.alpha = instance.alpha
         self.beta = instance.beta
-        self.third_refs = instance.third_refs
         self.no_home = instance.no_home
         self.no_away = instance.no_away
         self.trips = instance.trips
@@ -19,8 +20,8 @@ class Solver:
         self.C_A = instance.C_A
         self.d = instance.d
         self.r = instance.r
-        self.z_A = instance.z_A
-        self.z_E = instance.z_E
+        self.Z_A = instance.Z_A
+        self.Z_E = instance.Z_E
         self.h = instance.h
         self.t_win = instance.t_win
         self.gamma = instance.gamma
@@ -29,150 +30,195 @@ class Solver:
         self.T_home = instance.T_home
         self.delta = instance.delta
         self.p0 = instance.p0
+        self.n_refs = instance.n_refs
 
-        self.model = gb.Model("OptimizationModel")
+        self.model = None
 
-        self.x = None
-        self.z = None
+    def games_for_team_in_range(self, k, home):
+        games_in_range = []
+        if(not home):
+            for q in range(1, self.T[k] - self.gamma + 1):
+                games_in_range.append(self.games_teams[k][q])
+        else:
+            for q in range(1, self.T_home[k] - self.gamma_home + 1):
+                games_in_range.append(self.home_games_teams[k][q])
+        
+        return games_in_range
+    
+    def get_game(self, t, k):
+        return self.games_teams[k][t]
+
 
     def build_model(self):
-
-        self.x = self.model.addVars([(i, p) for i in range(self.refs) for p in range(self.games)], vtype=gb.GRB.BINARY, name="x")
-        self.z = self.model.addVars([(i, v) for i in range(self.refs) for v in range(len(self.trips))], vtype=gb.GRB.BINARY, name="z")
+        self.model = gb.Model("OptimizationModel")
+        self.model.setParam("TimeLimit", 600)
+        self.x = self.model.addVars([(i, p) for i in range(self.n_refs) for p in range(len(self.games) + len(self.p0))], vtype=gb.GRB.BINARY, name="x")
+        self.z = self.model.addVars([(i, v) for i in range(self.n_refs) for v in range(len(self.trips))], vtype=gb.GRB.BINARY, name="z")
 
         self.model.setObjective(
-            gb.quicksum(self.d[v.k, v.m] * self.z[i, v.id] for i in range(self.refs) for v in self.trips_tilde if v.k > 0 and v.m > 0) +
-            gb.quicksum(self.r[i, v.k] * self.z[i, v.id] for i in range(self.refs) for v in self.trips_tilde if v.k > 0 and v.m == 0) +
-            gb.quicksum(self.r[i, v.m] * self.z[i, v.id] for i in range(self.refs) for v in self.trips_tilde if v.k == 0 and v.m > 0) +
-            gb.quicksum(self.h * v.s * self.z[i, v.id] for i in range(self.refs) for v in self.trips_tilde if v.k > 0 and v.m > 0 and self.z_A[i] != self.z_E[v.k]),
+            gb.quicksum(self.d[k][m] * self.z[i, id] for i in range(self.n_refs) for id, (s, t, k, m) in enumerate(self.trips_tilde) if k > 0 and m > 0) +
+            gb.quicksum(self.r[i][k] * self.z[i, id] for i in range(self.n_refs) for id, (s, t, k, m) in enumerate(self.trips_tilde) if k > 0 and m == 0) +
+            gb.quicksum(self.r[i][m] * self.z[i, id] for i in range(self.n_refs) for id, (s, t, k, m) in enumerate(self.trips_tilde) if k == 0 and m > 0) +
+            gb.quicksum(self.h * s * self.z[i, id] for i in range(self.n_refs) for id, (s, t, k, m) in enumerate(self.trips_tilde) if k > 0 and m > 0 and self.Z_A[i] != self.Z_E[k]),
             gb.GRB.MINIMIZE
         )
 
-        for i in range(self.refs):
+        for i in range(self.n_refs):
             self.model.addRange(
-                gb.quicksum(self.x[i, p.id] for p in self.games if p.k > 0 and p.t <= self.t_win),
-                self.alpha[i], self.beta[i],
-                name="2) Constraint on the number of referee's games"
+                gb.quicksum(self.x[i, p[0]] for p in self.games if p[2] > 0 and p[1] <= self.t_win),
+                float(self.alpha[i]), float(self.beta[i]),
+                name="2)_Constraint_on_the_number_of_referee's_games"
             )
 
-        for i in range(self.refs):
-            for k in range(1, self.teams):
-                for q in range(1, self.T[k] - self.gamma):
+        for i in range(self.n_refs):
+            for k in range(1, 21):
+                games_k = sorted(self.games_teams[k], key=lambda x: x[1])
+                for t in range(len(games_k) - self.gamma + 1):
+                    window = games_k[t:t + self.gamma]
                     self.model.addConstr(
-                        gb.quicksum(self.x[i, p] for p in self.games_for_team_in_range(k, q, self.gamma)) <= 1,
-                        name="3) Constraint to avoid consecutive team's games with the same ref"
-                    )
-        
-        for i in range(self.refs):
-            for k in range(1, self.teams):
-                for q in range(1, self.T_home[k] - self.gamma_home):
-                    self.model.addConstr(
-                        gb.quicksum(self.x[i, p] for p in self.home_games_for_team_in_range(k, q, self.gamma_home)) <= 1,
-                        name="4) Constraint to avoid consecutive home team's games with the same ref"
+                        gb.quicksum(self.x[i, p[0]] for p in window) <= 1,
+                        name=f"3)_No_consec_games_team_{k}_ref_{i}_start_{window[0][1]}"
                     )
 
-        for i in range(self.refs):
+
+        for i in range(self.n_refs):
+            for k in range(1, 21):
+                games_k = sorted(self.home_games_teams[k], key=lambda x: x[1]) 
+                for t in range(len(games_k) - self.gamma_home + 1):
+                    window = games_k[t:t + self.gamma_home]
+                    self.model.addConstr(
+                        gb.quicksum(self.x[i, p[0]] for p in window) <= 1,
+                        name=f"4)_No_consec_games_team_{k}_ref_{i}_start_{window[0][1]}"
+                    )
+
+        for i in range(self.n_refs):
             for q in range(1, self.t_win - self.delta[i] + 1):
                 self.model.addConstr(
-                    gb.quicksum(self.x[i, self.p0[t]] for t in range(q, q + self.delta[i])) >= 1,
-                    name="5) Constraint to avoid that a ref to stay too much time away from home"
+                    gb.quicksum(self.x[i, self.p0[t][0]] for t in range(q, q + self.delta[i])) >= 1,
+                    name="5)_Constraint_to_avoid_that_a_ref_to_stay_too_much_time_away_from_home"
                 )
 
-        for i in range(self.refs):
+        for i in range(self.n_refs):
             for q in range(1, self.t_win - 4):
                 self.model.addConstr(
-                    gb.quicksum(self.x[i, p.id] for p in self.games
-                                if p.t in range(q, q + 5) and p.k > 0) <= 3,
-                    name="6) Constraint to avoid that a ref officiate more than three games in a win of 5 days"
+                    gb.quicksum(self.x[i, p[0]] for p in self.games
+                                if p[1] in range(q, q + 5) and p[2] > 0) <= 3,
+                    name="6)_Constraint_to_avoid_that_a_ref_officiate_more_than_three_games_in_a_win_of_5_days"
                 )
 
         for (i, k) in self.no_home:
-            for p in range(self.games):
-                if p.k == k:
-                    self.model.addConstr(self.x[i, p.id] == 0, name="7) Constraint to Constraint to prohibit a referee from officiating specific home teams")
+            self.model.addConstr(
+                gb.quicksum(self.x[i, p[0]] for p in self.games if p[2] == k)  == 0, 
+                name="7)_Constraint_to_Constraint_to_prohibit_a_referee_from_officiating_specific_home_teams")
 
-        for (i, l) in self.no_away:
-            for p in range(self.games):
-                if p.l == l:
-                    self.model.addConstr(self.x[i, p.id] == 0, name="8) Constraint to prohibit a referee from officiating specific away teams")
+        for (i, l) in self.no_away:            
+            self.model.addConstr(
+                    gb.quicksum(self.x[i, p[0]] for p in self.games if p[3] == l)  == 0, 
+                            name="8)_Constraint_to_prohibit_a_referee_from_officiating_specific_away_teams")
 
-        for p in range(self.games):
-            if p.k in self.teams1 and p.t <= self.t_win:
-                self.model.addConstr(gb.quicksum(self.x[i, p.id] for i in self.refs.cat_A) == 1, name="9) Ref from cat A")
-                self.model.addConstr(gb.quicksum(self.x[i, p.id] for i in self.refs.cat_A1) == 1, name="9) Ref from cat A1")
-                self.model.addConstr(gb.quicksum(self.x[i, p.id] for i in self.refs.cat_A2 + self.refs.cat_A3) == 1, name="9) Ref from cat A2 or cat A3")
-            elif p.k in self.teams2 and p.t <= self.t_win:
-                self.model.addConstr(gb.quicksum(self.x[i, p.id] for i in self.refs.cat_A + self.refs.cat_A1 + self.refs.cat_A2) == 1, name="10) Ref from cat A or cat A1 or cat A2")
-                self.model.addConstr(gb.quicksum(self.x[i, p.id] for i in self.refs.cat_A2 + self.refs.cat_A3) == 1, name="10) Ref from cat A2 or cat A3")
+        for p in self.games:
+            if p[2] in self.teams1 and p[1] <= self.t_win:
+                self.model.addConstr(gb.quicksum(self.x[i, p[0]] for i in self.refs[0]) == 1, name="9)_Ref_from_cat_A")
+                self.model.addConstr(gb.quicksum(self.x[i, p[0]] for i in self.refs[1]) == 1, name="9)_Ref_from_cat_A1")
+                self.model.addConstr(gb.quicksum(self.x[i, p[0]] for i in self.refs[2] + self.refs[3]) == 1, name="9)_Ref_from_cat_A2_or_cat_A3")
+            elif p[2] in self.teams2 and p[1] <= self.t_win:
+                self.model.addConstr(gb.quicksum(self.x[i, p[0]] for i in self.refs[0] + self.refs[1] + self.refs[2]) == 1, name="10)_Ref_from_cat_A_or_cat_A1_or_cat_A2")
+                self.model.addConstr(gb.quicksum(self.x[i, p[0]] for i in self.refs[2] + self.refs[3]) == 1, name="10)_Ref_from_cat_A2_or_cat_A3")
         
-        for i in range(self.refs):
+        for i in range(self.n_refs):
             for q in range(1, self.t_win + 1):
                 self.model.addConstr(
-                    gb.quicksum(self.x[i, p.id] for p in range(self.games) if p.t == q) <= 1,
-                    name="11) Constraint to avoid that a ref officiating two game in a single day"
+                    gb.quicksum(self.x[i, p[0]] for p in self.games + self.p0 if p[1] == q) <= 1,
+                    name="11)_Constraint_to_avoid_that_a_ref_officiating_two_game_in_a_single_day"
                 )
 
-        for i in range(self.refs):
+        for i in range(self.n_refs):
             for q in range(1, self.t_win + 1):
                 self.model.addConstr(
-                    gb.quicksum(self.z[i, v.id] for v in self.trips_tilde if v.t == q) <= 1,
-                    name="12) Constraint to avoid that a ref initiate more than a trip in a single day"
+                    gb.quicksum(self.z[i, id] for id, v in enumerate(self.trips_tilde) if v[1] == q) <= 1,
+                    name="12)_Constraint_to_avoid_that_a_ref_initiate_more_than_a_trip_in_a_single_day"
                 )
 
-        for i in range(self.refs):
-            for q in range(1, self.t_window + 1):
+        for i in range(self.n_refs):
+            for q in range(1, self.t_win + 1):
                 self.model.addConstr(
-                    gb.quicksum(self.z[i, v.id] for v in self.trips_tilde if v.t == q and v.s == 2) +
-                    gb.quicksum(self.z[i, v.id] for v in self.trips_tilde if v.t == q + 1) <= 1,
-                    name="13) Constraint to avoid that a ref initiate trip if he/she has just finished a two day trip"
+                    gb.quicksum(self.z[i, id] for id, v in enumerate(self.trips_tilde) if v[1] == q and v[0] == 2) +
+                    gb.quicksum(self.z[i, id] for id, v in enumerate(self.trips_tilde) if v[1] == q + 1) <= 1,
+                    name="13)_Constraint_to_avoid_that_a_ref_initiate_trip_if_he/she_has_just_finished_a_two_day_trip"
                 )
 
-        for i in range(self.refs):
-            for q in range(1, self.t_win):
-                for v in self.trips:
-                    if v.t < q and v.s == 1:
-                        p1 = self.get_game(t=v.t, k=v.k)
-                        p2 = self.get_game(t=v.t + 1, k=v.m)
-                        if p1 is not None and p2 is not None:
-                            self.model.addConstr(self.x[i, p1.id] + self.x[i, p2.id] <= 1 + self.z[i, v.id], name="14) Constraint to force connected z and x to be 1")
-                            self.model.addConstr(2 * self.z[i, v.id] <= self.x[i, p1.id] + self.x[i, p2.id], name="14) Constraint to force connected z and x to be 1")
+        for i in range(self.n_refs):
+            for q in range(self.t_win):
+                for p1 in self.games + self.p0:
+                    if p1[1] == q:
+                        for id, (s,t,k,m,n) in enumerate(self.trips):
+                            if s == 1 and t == q and k == p1[2]:
+                                p2 = next((g for g in self.games_teams[m] if g[1] == q + 1), None)
+                                if p2 is not None:
+                                    self.model.addConstr(self.x[i, p1[0]] + self.x[i, p2[0]] <= 1 + self.z[i, id], name="14)_Constraint_to_force_connected_z_and_x_to_be_1")
+                                    self.model.addConstr(2 * self.z[i, id] <= self.x[i, p1[0]] + self.x[i, p2[0]], name="14)_Constraint_to_force_connected_z_and_x_to_be_1")
 
-        for i in range(self.refs):
-            for q in range(1, self.t_window - 1):
-                for v_cap in self.trips:
-                    if v_cap.t < q and v_cap.s == 2:
-                        p1 = self.get_game(t=v_cap.t, home=v_cap.k)
-                        p2 = self.get_game(t=v_cap.t + 2, home=v_cap.m)
-                        if p1 is not None and p2 is not None:
-                            # Somma dei viaggi da t=q con durata 1
-                            z_sum = gb.quicksum(
-                                self.z[i, v_tilde.id]
-                                for v_tilde in self.trips
-                                if v_tilde.t == q and v_tilde.s == 1
-                            )
-                            self.model.addConstr(
-                                self.x[i, p1.id] + self.x[i, p2.id] <= 1 + self.z[i, v_cap.id] + z_sum,
-                                name="15) Constraint to force connected z and x to be 1"
-                            )
-                            self.model.addConstr(
-                                2 * self.z[i, v_cap.id] <= self.x[i, p1.id] + self.x[i, p2.id],
-                                name="15) Constraint to force connected z and x to be 1"
-                            )
+        for i in range(self.n_refs):
+            for q in range(self.t_win - 1):
+                for p1 in self.games + self.p0:
+                    if p1[1] == q:
+                        for id, (s,t,k,m,n) in enumerate(self.trips):
+                            if s == 2 and t == q and k == p1[2]:
+                                p2 = next((g for g in self.games_teams[m] if g[1] == q + 2), None)
+                                if p2 is not None:
+                                    z_sum = gb.quicksum(
+                                        self.z[i, id_tilde]
+                                        for id_tilde, v_tilde in enumerate(self.trips_tilde)
+                                        if v_tilde[1] == q and v_tilde[0] == 1
+                                    )
+                                    self.model.addConstr(
+                                        self.x[i, p1[0]] + self.x[i, p2[0]] <= 1 + self.z[i, id] + z_sum,
+                                        name="15)_Constraint_to_force_connected_z_and_x_to_be_1"
+                                    )
+                                    self.model.addConstr(
+                                        2 * self.z[i, id] <= self.x[i, p1[0]] + self.x[i, p2[0]],
+                                        name="15)_Constraint_to_force_connected_z_and_x_to_be_1"
+                                    )
 
-        for i in range(self.refs):
+
+        for i in range(self.n_refs):
             for q in range(1, self.t_win):
                 self.model.addConstr(
-                    gb.quicksum(self.x[i, p.id] for p in range(self.games) if p.t == q) + 
-                    gb.quicksum(self.x[i, p.id] for p in range(self.games) if p.t == q + 1) >= 1,
-                    name="16) Constraint to assign a ref at least one game (real or fictious) every two days"
+                    gb.quicksum(self.x[i, p[0]] for p in self.games + self.p0 if p[1] == q) + 
+                    gb.quicksum(self.x[i, p[0]] for p in self.games + self.p0 if p[1] == q + 1) >= 1,
+                    name="16)_Constraint_to_assign_a_ref_at_least_one_game_(real_or_fictious)_every_two_days"
         )
 
-        for i in range(self.refs):
-            for v in self.trips_tilde:
-                if v.s == 1:
-                    if (v.k, v.m) in self.CE:
-                        self.model.addConstr(self.z[i, v.id] == 0, name="17) Constraint to avoid unfeasible trip")
-                    if v.k == 0 and (i, v.m) in self.CA:
-                        self.model.addConstr(self.z[i, v.id] == 0, name="17) Constraint to avoid unfeasible trip")
-                    if v.m == 0 and (i, v.k) in self.CA:
-                        self.model.addConstr(self.z[i, v.id] == 0, name="17) Constraint to avoid unfeasible trip")
+        for i in range(self.n_refs):
+            for id, v in enumerate(self.trips_tilde):
+                if v[0] == 1:
+                    if (v[2], v[3]) in self.C_E:
+                        self.model.addConstr(self.z[i, id] == 0, name="17)_Constraint_to_avoid_unfeasible_trip")
+                    if v[2] == 0 and (i, v[3]) in self.C_A:
+                        self.model.addConstr(self.z[i, id] == 0, name="17)_Constraint_to_avoid_unfeasible_trip")
+                    if v[3] == 0 and (i, v[2]) in self.C_A:
+                        self.model.addConstr(self.z[i, id] == 0, name="17)_Constraint_to_avoid_unfeasible_trip")
+
+
+    def solve(self):
+        self.model.optimize()
+        
+        if self.model.status == gb.GRB.INFEASIBLE:
+            print("⚠️ Model infeasible. Computing IIS...")
+            self.model.computeIIS()
+            self.model.write("infeasible.ilp")     
+            self.model.write("infeasible.lp")   
+            print("✅ IIS written to 'infeasible.ilp' and 'infeasible.lp'")
+
+        if self.model.status == gb.GRB.OPTIMAL:
+            return True
+        
+        if self.model.status == gb.GRB.TIME_LIMIT:
+            return False
+
+
+
+    def debug(self):
+        self.model.computeIIS()
+        self.model.write("model.ilp")
+        self.model.write("infeasible.ilp")

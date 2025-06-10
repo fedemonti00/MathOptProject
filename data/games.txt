@@ -1,0 +1,179 @@
+Sep. 23, 2015	Bahia Basket - Lanus	88-76
+Sep. 23, 2015	Estudiantes C. - Regatas C.	71-63
+Sep. 23, 2015	Quilmes MP - Penarol	61-77
+Sep. 23, 2015	San Lorenzo - Quimsa	79-64
+Sep. 25, 2015	Argentino - Lanus	71-69
+Sep. 25, 2015	GECR Indalo - Obras Basket	101-107 OT
+Sep. 25, 2015	La Union - Olimpico LB	87-91
+Sep. 25, 2015	Sionista - Regatas C.	75-70
+Sep. 27, 2015	Bahia Basket - Quilmes MP	85-74
+Sep. 27, 2015	GECR Indalo - Ferrocarril O.	87-83
+Sep. 27, 2015	Libertad S. - Quimsa	90-59
+Sep. 24, 2015	San Lorenzo - Ferrocarril O.	77-57
+Sep. 29, 2015	Argentino - Quilmes MP	82-75
+Sep. 28, 2015	Atenas - La Union	77-75
+Sep. 29, 2015	Sionista - Quimsa	81-80
+Sep. 29, 2015	Lanus - San Lorenzo	92-93
+Sep. 29, 2015	Bahia Basket - Boca Jrs	82-56
+Sep. 29, 2015	Regatas C. - Olimpico LB	93-81
+Sep. 30, 2015	Ferrocarril O. - Obras Basket	77-79
+Sep. 30, 2015	Instituto C. - La Union	85-92
+Oct. 1, 2015	Sionista - Libertad S.	86-88
+Oct. 1, 2015	Estudiantes C. - Quimsa	66-59
+Oct. 1, 2015	Penarol - Boca Jrs	86-80 OT
+Oct. 2, 2015	Obras Basket - Lanus	103-91
+Oct. 2, 2015	Bahia Basket - GECR Indalo	78-68
+Oct. 2, 2015	Atenas - Instituto C.	48-59
+Oct. 2, 2015	Argentino - San Lorenzo	70-90
+Oct. 3, 2015	Estudiantes C. - Libertad S.	73-74
+Oct. 3, 2015	Quilmes MP - Boca Jrs	87-89 OT 
+Oct. 4, 2015	Penarol - GECR Indalo	66-80
+Oct. 4, 2015	La Union - Sionista	68-75
+Oct. 4, 2015	Quimsa - Olimpico LB	76-85
+Oct. 7, 2015	Lanus - Argentino	84-76
+Oct. 6, 2015	Penarol - Bahia Basket	101-86
+Oct. 5, 2015	Ferrocarril O. - Lanus	67-57
+Oct. 6, 2015	San Martin C. - Sionista	70-88
+Oct. 6, 2015	Regatas C. - La Union	77-73
+Oct. 6, 2015	Libertad S. - Instituto C.	73-71
+Oct. 6, 2015	Quilmes MP - GECR Indalo	66-93
+Oct. 7, 2015	Quimsa - Estudiantes C.	99-80
+Oct. 10, 2015	San Lorenzo - Argentino	92-65
+Oct. 8, 2015	San Martin C. - La Union	91-99
+Oct. 8, 2015	Regatas C. - Sionista	78-57
+Oct. 8, 2015	Quilmes MP - Bahia Basket	74-81
+Oct. 8, 2015	Boca Jrs - Ferrocarril O.	70-72
+Oct. 9, 2015	Instituto C. - Atenas	78-89
+Oct. 9, 2015	Quimsa - Estudiantes C.	99-80
+Oct. 11, 2015	Sionista - Estudiantes C.	89-72
+Oct. 11, 2015	Bahia Basket - Ferrocarril O.	69-87
+Oct. 11, 2015	Atenas - Libertad S.	88-105
+Oct. 11, 2015	La Union - Regatas C.	65-83
+Oct. 11, 2015	GECR Indalo - Lanus	79-61
+Oct. 11, 2015	Quimsa - San Martin C.	94-87
+Oct. 13, 2015	GECR Indalo - Penarol	97-93
+Oct. 13, 2015	Instituto C. - Libertad S.	76-61
+Oct. 13, 2015	Olimpico LB - San Martin C.	97-82
+Oct. 14, 2015	Argentino - Obras Basket	78-73
+Oct. 14, 2015	Estudiantes C. - Atenas	87-72
+Oct. 14, 2015	Regatas C. - Quimsa	65-69
+Oct. 15, 2015	Lanus - Boca Jrs	73-74
+Oct. 15, 2015	San Lorenzo - Bahia Basket	87-63
+Oct. 16, 2015	Regatas C. - Instituto C.	81-66
+Oct. 16, 2015	San Martin C. - Quimsa	80-82
+Oct. 16, 2015	Estudiantes C. - Olimpico LB	86-74
+Oct. 16, 2015	Sionista - Atenas	91-79
+Oct. 15, 2015	Ferrocarril O. - Penarol	97-106
+Oct. 17, 2015	Lanus - Bahia Basket	79-83 OT
+Oct. 17, 2015	Obras Basket - Penarol	83-86
+Oct. 18, 2015	Quilmes MP - Argentino	101-97
+Oct. 18, 2015	San Lorenzo - GECR Indalo	89-84
+Oct. 18, 2015	San Martin C. - Instituto C.	78-84
+Oct. 18, 2015	Sionista - Olimpico LB	86-93
+Oct. 18, 2015	La Union - Quimsa	85-80 
+Oct. 19, 2015	Obras Basket - Bahia Basket	84-74
+Oct. 20, 2015	Boca Jrs - GECR Indalo	73-82
+Oct. 20, 2015	Penarol - Argentino	90-78
+Oct. 20, 2015	Libertad S. - Olimpico LB	72-50
+Oct. 20, 2015	La Union - Instituto C.	63-83
+Oct. 22, 2015	Ferrocarril O. - GECR Indalo	68-66
+Oct. 22, 2015	Libertad S. - Estudiantes C.	78-61
+Oct. 22, 2015	Quilmes MP - San Lorenzo	79-88
+Oct. 22, 2015	Quimsa - Sionista	90-80
+Oct. 21, 2015	San Martin C. - Regatas C.	90-79
+Oct. 22, 2015	Bahia Basket - Argentino	89-78
+Oct. 26, 2015	Regatas C. - Libertad S.	81-75
+Oct. 23, 2015	Regatas C. - San Martin C.	89-86
+Oct. 23, 2015	Boca Jrs - Obras Basket	88-92 OT
+Oct. 24, 2015	Penarol - San Lorenzo	88-86 OT
+Oct. 24, 2015	Atenas - Estudiantes C.	70-76
+Oct. 26, 2015	Olimpico LB - La Union	87-67
+Oct. 24, 2015	Olimpico LB - Sionista	86-74
+Oct. 24, 2015	Quimsa - La Union	83-75
+Oct. 26, 2015	Bahia Basket - San Lorenzo	77-94
+Oct. 26, 2015	Lanus - Obras Basket	71-68
+Oct. 26, 2015	Argentino - Ferrocarril O.	86-71
+Oct. 26, 2015	GECR Indalo - Quilmes MP	84-60
+Oct. 26, 2015	Instituto C. - Estudiantes C.	57-59
+Oct. 29, 2015	Obras Basket - Argentino	90-84
+Oct. 28, 2015	Boca Jrs - Penarol	90-62
+Oct. 28, 2015	Ferrocarril O. - Quilmes MP	79-67
+Oct. 28, 2015	San Martin C. - Libertad S.	82-67
+Oct. 29, 2015	Atenas - Regatas C.	102-97 OT
+Oct. 29, 2015	Instituto C. - Quimsa	79-71
+Oct. 30, 2015	Lanus - Penarol	81-67
+Oct. 30, 2015	San Lorenzo - Quilmes MP	92-86
+Oct. 30, 2015	La Union - Libertad S.	63-80
+Oct. 31, 2015	Instituto C. - Regatas C.	87-90
+Oct. 31, 2015	Estudiantes C. - San Martin C.	84-95
+Oct. 31, 2015	Atenas - Quimsa	81-97
+Nov. 1, 2015	San Lorenzo - Penarol	76-80
+Nov. 2, 2015	Sionista - San Martin C.	92-84
+Nov. 2, 2015	Libertad S. - Regatas C.	100-94
+Nov. 2, 2015	Quilmes MP - Lanus	75-84
+Nov. 3, 2015	Estudiantes C. - Instituto C.	98-97 OT
+Nov. 3, 2015	Olimpico LB - Atenas	97-74
+Nov. 3, 2015	Boca Jrs - Bahia Basket	90-60
+Nov. 4, 2015	Penarol - Lanus	80-72
+Oct. 31, 2015	GECR Indalo - Argentino	94-62
+Oct. 31, 2015	Obras Basket - Boca Jrs	90-89 
+Nov. 7, 2015	Obras Basket - GECR Indalo	80-87
+Nov. 4, 2015	Libertad S. - San Martin C.	97-96
+Nov. 5, 2015	Sionista - Instituto C.	77-75
+Nov. 4, 2015	San Lorenzo - Obras Basket	90-97
+Nov. 5, 2015	Argentino - GECR Indalo	78-98
+Nov. 5, 2015	Quimsa - Atenas	94-86
+Nov. 5, 2015	Ferrocarril O. - Bahia Basket	51-76
+Nov. 6, 2015	Penarol - Quilmes MP	85-79
+Nov. 6, 2015	La Union - Estudiantes C.	81-87
+Nov. 7, 2015	Lanus - Ferrocarril O.	76-79
+Nov. 7, 2015	Argentino - Bahia Basket	67-68
+Nov. 8, 2015	Instituto C. - Olimpico LB	81-78
+Nov. 8, 2015	San Martin C. - Estudiantes C.	110-71
+Nov. 9, 2015	Lanus - GECR Indalo	81-86
+Nov. 10, 2015	Ferrocarril O. - Argentino	79-64
+Nov. 10, 2015	San Lorenzo - Boca Jrs	74-77
+Nov. 10, 2015	Regatas C. - Estudiantes C.	83-59
+Nov. 10, 2015	Atenas - Olimpico LB	78-86 OT 
+Nov. 11, 2015	Instituto C. - San Martin C.	85-95
+Nov. 13, 2015	Boca Jrs - Argentino	89-83 OT
+Nov. 13, 2015	Ferrocarril O. - San Lorenzo	92-94
+Nov. 13, 2015	Atenas - San Martin C.	88-91
+Nov. 14, 2015	Instituto C. - Sionista	84-78 
+Nov. 15, 2015	GECR Indalo - Boca Jrs	96-79
+Nov. 15, 2015	Olimpico LB - Quimsa	78-69
+Nov. 16, 2015	Obras Basket - San Lorenzo	92-86
+Nov. 16, 2015	Lanus - Quilmes MP	73-76
+Nov. 16, 2015	Atenas - Sionista	73-78  
+Nov. 17, 2015	Bahia Basket - Penarol	76-68
+Nov. 17, 2015	Libertad S. - La Union	104-66
+Nov. 18, 2015	Boca Jrs - Quilmes MP	89-75
+Nov. 18, 2015	Obras Basket - Ferrocarril O.	65-72
+Nov. 19, 2015	Argentino - Penarol	69-59
+Nov. 19, 2015	Sionista - La Union	75-96
+Nov. 20, 2015	Obras Basket - Quilmes MP	101-91
+Nov. 20, 2015	Ferrocarril O. - Boca Jrs	65-79
+Nov. 20, 2015	GECR Indalo - San Lorenzo	85-77
+Nov. 21, 2015	Estudiantes C. - La Union	62-100
+Nov. 21, 2015	Regatas C. - Atenas	102-89
+Nov. 21, 2015	Quimsa - Libertad S.	91-80
+Nov. 23, 2015	Bahia Basket - Obras Basket	63-91
+Nov. 23, 2015	San Martin C. - Atenas	101-74
+Nov. 23, 2015	Olimpico LB - Libertad S.	70-61
+Nov. 24, 2015	Boca Jrs - Lanus	93-89 OT
+Nov. 25, 2015	Penarol - Ferrocarril O.	88-74
+Nov. 26, 2015	Quilmes MP - Obras Basket	77-74
+Nov. 25, 2015	La Union - Atenas	64-57 
+Nov. 26, 2015	Libertad S. - Sionista	90-71
+Nov. 26, 2015	Olimpico LB - Instituto C.	96-85
+Nov. 26, 2015	Quimsa - Regatas C.	69-75
+Nov. 27, 2015	San Lorenzo - Lanus	96-83
+Nov. 27, 2015	Argentino - Boca Jrs	88-63
+Nov. 27, 2015	Quilmes MP - Ferrocarril O.	89-83
+Nov. 27, 2015	GECR Indalo - Bahia Basket	95-64
+Nov. 27, 2015	Penarol - Obras Basket	74-82
+Nov. 28, 2015	Libertad S. - Atenas	83-65
+Nov. 28, 2015	Estudiantes C. - Sionista	80-78
+Nov. 28, 2015	La Union - San Martin C.	87-78
+Nov. 28, 2015	Olimpico LB - Regatas C.	84-59
+Nov. 28, 2015	Quimsa - Instituto C.	104-95
