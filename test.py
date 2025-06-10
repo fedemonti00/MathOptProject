@@ -34,8 +34,6 @@ f_i = [i*14 for i in range(1,last_day + 1) if i*14 < last_day]
 f_i.append(last_day - 5)
 for i, f in enumerate(f_i):
     days = f + 5
-    with open("wat.txt", "a") as f_out:
-        f_out.write(f'Sono al giro f = {f}')
     res_model = None
     if i != 0:
         res_model = heuristic.solve_heuristic(i, f, f_i[i - 1])

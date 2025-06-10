@@ -64,8 +64,6 @@ class Heuristic:
         else:
             self.heuristic_model.t_win = 1
         
-        with open("wat.txt", "a") as f_out:
-                f_out.write(f'Sono al giro f = {f}')
         while(True):
             self.heuristic_model.build_model()
             if refining == 0:
@@ -92,8 +90,6 @@ class Heuristic:
                                         for v in self.heuristic_model.model.getVars()
                                         if v.VarName.startswith("x[") and v.X > 0.8
                                     ]
-            with open("wat.txt", "a") as f_out:
-                f_out.write(f'Entro con t_win: {self.heuristic_model.t_win}')
             while(True):
                 self.heuristic_model.build_model()
                 self.hard_fix_assignments_up()

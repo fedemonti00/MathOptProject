@@ -51,7 +51,7 @@ class Solver:
 
     def build_model(self):
         self.model = gb.Model("OptimizationModel")
-        self.model.setParam("TimeLimit", 600)
+        self.model.setParam("TimeLimit", 1800)
         self.x = self.model.addVars([(i, p) for i in range(self.n_refs) for p in range(len(self.games) + len(self.p0))], vtype=gb.GRB.BINARY, name="x")
         self.z = self.model.addVars([(i, v) for i in range(self.n_refs) for v in range(len(self.trips))], vtype=gb.GRB.BINARY, name="z")
 

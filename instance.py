@@ -20,7 +20,7 @@ class Instance:
         self.beta = []
         for i in range(60):
                 self.alpha.append(0)
-                self.beta.append(5)
+                self.beta.append(10)
         self.no_home = zone_info[0]
         self.no_away = zone_info[1]
         self.trips = trips_info[0]
@@ -38,7 +38,7 @@ class Instance:
         self.T = games_info[3]
         self.T_home = games_info[4]
         self.delta = [14 for i in range(60)]
-        self.p0 = [(len(self.games) - 1 + t, t, 0 , 0) for t in range(67)]
+        self.p0 = [(len(self.games) - 1 + t, t, 0 , 0) for t in range(len(self.games))]
         self.n_refs = 60
 
 
