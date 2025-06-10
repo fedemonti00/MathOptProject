@@ -51,11 +51,8 @@ class Solver:
 
     def build_model(self):
         self.model = gb.Model("OptimizationModel")
-<<<<<<< HEAD
-        self.model.setParam("TimeLimit", 1800)
-=======
         self.model.setParam("TimeLimit", 3600)
->>>>>>> 559fa09e3d935fd2f0c0c2b5b0d71019d882c384
+        
         self.x = self.model.addVars([(i, p) for i in range(self.n_refs) for p in range(len(self.games) + len(self.p0))], vtype=gb.GRB.BINARY, name="x")
         self.z = self.model.addVars([(i, v) for i in range(self.n_refs) for v in range(len(self.trips))], vtype=gb.GRB.BINARY, name="z")
 
@@ -206,23 +203,9 @@ class Solver:
 
     def solve(self):
         self.model.optimize()
-        
-        if self.model.status == gb.GRB.INFEASIBLE:
-            print("⚠️ Model infeasible. Computing IIS...")
-            self.model.computeIIS()
-            self.model.write("infeasible.ilp")     
-            self.model.write("infeasible.lp")   
-            print("✅ IIS written to 'infeasible.ilp' and 'infeasible.lp'")
 
         if self.model.status == gb.GRB.OPTIMAL:
             return True
         
         if self.model.status == gb.GRB.TIME_LIMIT:
             return False
-
-
-
-    def debug(self):
-        self.model.computeIIS()
-        self.model.write("model.ilp")
-        self.model.write("infeasible.ilp")
